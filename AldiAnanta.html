@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Sederhana</title>
+  <style>
+    .menu{
+      text-align: center;
+      background-color: darkviolet;
+      color: whitesmoke;
+      font-size: 22px;
+      padding-top: 18pt;
+    }
+    body {
+      background-color: burlywood;
+      color: black;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 100px;
+    }
+    input {
+      background-color: darkgrey;
+      padding: 10px;
+      margin: 10px;
+    }
+    button {
+      background-color: indianred;
+      color: whitesmoke;
+      border-radius: 5px;
+      padding: 10px;
+      box-sizing: border-box;
+      border-color: yellowgreen;
+      text-decoration: none;
+      margin: 5px;
+      cursor: pointer;
+    }
+      .button:hover{
+      background-color: whitesmoke;
+    }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Calculator Sederhana</h2>
+  <p align="center">
+    <label>Bilangan 1:</label>
+  </p>
+
+  <p align="center">
+    <input type="text" id="input1" placeholder="">
+  </p>
+
+  <p>
+    <label>Bilangan 2:</label>
+  </p>
+
+  <p>
+    <input type="text" id="input2" placeholder="">
+  </p>
+
+  <br>
+
+  <button onclick="calculate('add')">(+)</button>
+  <button onclick="calculate('subtract')">(-)</button>
+  <button onclick="calculate('multiply')">(*)</button>
+  <button onclick="calculate('divide')">(/)</button>
+
+  <br>
+
+  <h3>Jawaban:</h3>
+  <div id="Jawaban"></div>
+
+  <script>
+    function calculate(operation) {
+      var num1 = parseFloat(document.getElementById('input1').value);
+      var num2 = parseFloat(document.getElementById('input2').value);
+      var result;
+
+      if (isNaN(num1) || isNaN(num2)) {
+        alert('Please enter valid numbers');
+        return;
+      }
+
+      switch (operation) {
+        case 'add':
+          result = num1 + num2;
+          break;
+        case 'subtract':
+          result = num1 - num2;
+          break;
+        case 'multiply':
+          result = num1 * num2;
+          break;
+        case 'divide':
+          if (num2 !== 0) {
+            result = num1 / num2;
+          } else {
+            alert('Cannot divide by zero');
+            return;
+          }
+          break;
+        default:
+          alert('Invalid operation');
+          return;
+      }
+
+      document.getElementById('Jawaban').innerHTML = '' + result;
+    }
+  </script>
+
+</body>
+</html>
